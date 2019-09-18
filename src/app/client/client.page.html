@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-back-button></ion-back-button>
+      <ion-title>client</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-button size="large" fill="outline" expand="block" [routerLink]="['/edit-client']" >
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>  
+
+    <ion-searchbar class="searchIcon"></ion-searchbar>
+     <ion-list>
+        <ion-radio-group [(ngModel)]="clientSelected" (ionChange)="radioGroupChange()">
+            <ion-list-header>
+                Clients
+            </ion-list-header>
+          <ion-item *ngFor="let client of clients">
+            <ion-card>
+              <span  *ngFor="let entreprise of entreprises">
+                <span *ngIf="client.entSiret==entreprise.entSiret">
+                  <ion-radio [value]="client" style="list-style: none"></ion-radio>
+                  <ion-label> Nom: {{client.cliNom}} {{ client.cliPrenom }}
+                    <br />Entreprise : {{ entreprise.entNom }}<br /> Ville : {{ entreprise.entVille }}
+                  </ion-label>
+                </span>
+              </span>
+              <ion-card-content *ngIf="clientSelected==client">
+                <ion-item>
+                  <ion-list>
+                    <app-detail-client></app-detail-client>
+                  </ion-list>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </ion-radio-group>
+     </ion-list>
+
+
+</ion-content>
+<ion-item *ngIf="clientSelected!==undefined">
+    <ion-button slot="start" (click)="goToDetails()">Modifier client</ion-button>
+    <ion-button slot="end">Supprimer client</ion-button>
+  </ion-item>
+
+

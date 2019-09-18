@@ -1,0 +1,21 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+  <ion-tabs>
+      <ion-tab-bar>
+        <ion-tab-button [routerLink]="['/client']" routerLinkActive="link-active" >
+          <ion-icon name="contacts"></ion-icon>
+          <ion-label>Clients</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button [routerLink]="['/deplacement']" routerLinkActive="link-active" >
+          <ion-icon name="car"></ion-icon>
+          <ion-label>Deplacements</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button [routerLink]="['/stats']" routerLinkActive="link-active" >
+          <ion-icon name="trending-up"></ion-icon>
+          <ion-label>Statistiques</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+</ion-app>

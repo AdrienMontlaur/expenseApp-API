@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+        <ion-back-button></ion-back-button>
+        <ion-title *ngIf="clientModif.cliId!==undefined">Modifier-client</ion-title>
+        <ion-title *ngIf="clientModif.cliId==undefined">Créer-client</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #form='ngForm'>
+    <ion-label>Client</ion-label>
+      <ion-item>
+        <ion-label>Nom :</ion-label>
+        <ion-input name="cliNom" [(ngModel)]="clientModif.cliNom" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Prenom :</ion-label>
+        <ion-input name="cliPrenom" [(ngModel)]="clientModif.cliPrenom" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fonction :</ion-label>
+        <ion-input name="cliFonction" [(ngModel)]="clientModif.cliFonction" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mail :</ion-label>
+        <ion-input name="cliMail" [(ngModel)]="clientModif.cliMail" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Numéro de téléphone :</ion-label>
+        <ion-input name="cliNumeroTelephone" [(ngModel)]="clientModif.cliNumeroTelephone" required></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>salId :</ion-label>
+          <ion-input name="salId" [(ngModel)]="clientModif.salId" required></ion-input>
+      </ion-item>
+
+    <ion-label>Entreprise</ion-label>
+      <ion-item>
+        <ion-label>Siret :</ion-label>
+        <ion-input name="entSiret" [(ngModel)]="clientModif.entSiret" required></ion-input>
+      </ion-item>
+
+  </form>
+  <ion-button *ngIf="clientModif.cliId!==undefined" expand="full" (click)="createOrUpdateClient(form)">Modifier</ion-button>
+  <ion-button *ngIf="clientModif.cliId==undefined" expand="full" (click)="createOrUpdateClient(form)">Créer</ion-button>
+
+
+</ion-content>
